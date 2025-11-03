@@ -17,12 +17,14 @@
 		"baseUrl": ".",
 		"paths": {
 			"@src/*": ["src/*"],
+			"@assets/*": ["src/assets/*"],
+			"@types/*": ["src/types/*"],
 			"@components/*": ["src/components/*"],
 			"@interfaces/*": ["src/interfaces/*"],
 			"@utils/*": ["src/utils/*"],
 			"@pricingAlgorithm/*": ["src/pricingAlgorithm/*"],
-      "@pages/*": ["src/pages/*"]
-		},
+			"@pages/*": ["src/pages/*"]
+		}
 	},
 	"include": ["src", "tests"]
 }

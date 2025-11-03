@@ -1,39 +1,42 @@
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import { useState, useMemo } from 'react';
-import { themes } from '@src/theme';
+import { CssBaseline, Button } from '@mui/material';
+import { ThemeProvider, createTheme, useColorScheme } from '@mui/material/styles';
 import { Home } from '@pages/Home/Home';
 
 import './App.scss';
 
 function App() {
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+	const theme = createTheme({
+		colorSchemes: {
+			dark: true,
+		},
+	});
 
-  const theme = useMemo(
-    () => (mode === 'light' ? themes.lightTheme : themes.darkTheme),
-    [mode]
-  );
-
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <button
-        style={{
-          position: 'absolute',
-          top: 16,
-          right: 16,
-          background: 'none',
-          border: '1px solid #C9A227',
-          borderRadius: 8,
-          padding: '6px 12px',
-          cursor: 'pointer',
-        }}
-        onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
-      >
-        Toggle {mode === 'light' ? 'Dark' : 'Light'}
-      </button>
-      <Home />
-    </ThemeProvider>
-  );
+	return (
+		<ThemeProvider theme={theme} defaultMode="light" modeStorageKey="mui-mode">
+			<CssBaseline />
+			<Home />
+		</ThemeProvider>
+	);
 }
+
+// function Switcher() {
+// 	const { mode, setMode } = useColorScheme();
+// 	if (!mode) {
+// 		return null;
+// 	}
+
+// 	return (
+// 		<Button
+// 			onClick={() => {
+// 				console.log(mode);
+// 				setMode(mode === 'light' ? 'dark' : 'light');
+// 			}}
+// 			sx={{ position: 'absolute', top: 16, right: 16 }}
+// 			variant="outlined"
+// 		>
+// 			{mode === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+// 		</Button>
+// 	);
+// }
 
 export default App;
