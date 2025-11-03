@@ -4,14 +4,6 @@ export const BASE_PRICE = 5000; // base multiplier per carat
 export const CARAT_POWER_BASELINE = 1.2;
 export const CARAT_POWER_HEURISTIC = 1.3;
 
-export const IDEAL_TABLE = { min: 55, max: 62 };
-export const IDEAL_DEPTH = { min: 59, max: 63 };
-export const IDEAL_LWR = { min: 0.95, max: 1.05 };
-
-export const PROP_SCORE_IDEAL = 1.05; // reward multiplier for ideal proportions
-export const PROP_SCORE_MIN = 0.8; // min penalty for outliers
-export const PROP_SCORE_SLOPE = 0.02; // how fast penalty drops
-
 export const HEURISTIC_WEIGHTS = {
 	shape: 0.1,
 	cut: 0.15,

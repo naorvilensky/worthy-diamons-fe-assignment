@@ -1,14 +1,7 @@
-// priceAlgorithms.ts
 import {
 	BASE_PRICE,
 	CARAT_POWER_BASELINE,
 	CARAT_POWER_HEURISTIC,
-	IDEAL_TABLE,
-	IDEAL_DEPTH,
-	IDEAL_LWR,
-	PROP_SCORE_IDEAL,
-	PROP_SCORE_MIN,
-	PROP_SCORE_SLOPE,
 	HEURISTIC_WEIGHTS,
 	HYBRID_RATIO,
 } from '@pricingAlgorithm/diamondConfig';
@@ -32,22 +25,10 @@ import {
 } from '@pricingAlgorithm/diamondConsts';
 import { Diamond } from '@pricingAlgorithm/diamondInterface';
 
-// ---------- Utility ----------
-
-function proportionScore(value: number, idealMin: number, idealMax: number): number {
-	if (value >= idealMin && value <= idealMax) return PROP_SCORE_IDEAL;
-	const diff = Math.abs((idealMin + idealMax) / 2 - value);
-	return Math.max(PROP_SCORE_MIN, PROP_SCORE_IDEAL - diff * PROP_SCORE_SLOPE);
-}
-
 // ---------- 1. Baseline Algorithm ----------
 
 export function baselinePrice(d: Diamond): number {
 	const base = BASE_PRICE * Math.pow(d.carat, CARAT_POWER_BASELINE);
-	const proportionFactor =
-		proportionScore(d.table, IDEAL_TABLE.min, IDEAL_TABLE.max) *
-		proportionScore(d.depth, IDEAL_DEPTH.min, IDEAL_DEPTH.max) *
-		proportionScore(d.lwr, IDEAL_LWR.min, IDEAL_LWR.max);
 
 	return Math.round(
 		base *
@@ -58,8 +39,7 @@ export function baselinePrice(d: Diamond): number {
 			POLISH_FACTOR[d.polish] *
 			SYMMETRY_FACTOR[d.symmetry] *
 			FLUORESCENCE_FACTOR[d.fluorescence] *
-			CERTIFICATE_FACTOR[d.certificate] *
-			proportionFactor
+			CERTIFICATE_FACTOR[d.certificate]
 	);
 }
 
@@ -79,13 +59,8 @@ export function heuristicPrice(d: Diamond): number {
 		FLUORESCENCE_MAP[d.fluorescence] * w.fluorescence +
 		CERTIFICATE_MAP[d.certificate] * w.certificate;
 
-	const propScore =
-		proportionScore(d.table, IDEAL_TABLE.min, IDEAL_TABLE.max) *
-		proportionScore(d.depth, IDEAL_DEPTH.min, IDEAL_DEPTH.max) *
-		proportionScore(d.lwr, IDEAL_LWR.min, IDEAL_LWR.max);
-
 	const rarityBoost = Math.pow(score / 4, 1.5);
-	return Math.round(base * rarityBoost * propScore);
+	return Math.round(base * rarityBoost);
 }
 
 // ---------- 3. KNN Algorithm ----------
