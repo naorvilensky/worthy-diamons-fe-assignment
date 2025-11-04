@@ -1,11 +1,11 @@
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { ButtonBase, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { ButtonBase, useMediaQuery, useTheme } from '@mui/material';
 import { Grid, Box } from '@mui/system';
 import { SelectorTitle } from '@src/components/shared/SelectorTitle';
 import { Diamond } from '@src/pricingAlgorithm/diamondInterface';
 
 export interface ShapeSelectorProps {
-	value: Diamond['shape'];
+	selected: Diamond['shape'];
 	onChange: (shape: Diamond['shape']) => void;
 }
 
@@ -22,7 +22,7 @@ const SHAPES = [
 	{ name: 'Heart', icon: '/src/assets/diamond-shapes/heart.svg' },
 ];
 
-export function ShapeSelector({ value, onChange }: ShapeSelectorProps) {
+export function ShapeSelector({ selected, onChange }: ShapeSelectorProps) {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -37,25 +37,25 @@ export function ShapeSelector({ value, onChange }: ShapeSelectorProps) {
 
 			<Grid
 				container
-				spacing={{ xs: 1, sm: 2 }}
+				spacing={1}
 				sx={{
 					mx: 1,
 				}}
-				columns={10}
+				columns={5}
 				data-class="shape-selector"
 			>
 				{SHAPES.map(s => {
-					const selected = s.name === value;
+					const isSelected = s.name === selected;
 					return (
-						<Grid key={s.name} size={2}>
+						<Grid key={s.name} size={1}>
 							<ButtonBase
 								onClick={() => onChange(s.name as Diamond['shape'])}
 								sx={{
-									width: { xs: '60px', sm: '100px' },
+									width: '100%',
 									flexDirection: 'column',
 									borderRadius: 1,
-									border: selected ? '1px solid #1976d2' : '1px solid #ccc',
-									backgroundColor: selected
+									border: isSelected ? '1px solid #1976d2' : '1px solid #ccc',
+									backgroundColor: isSelected
 										? 'rgba(25,118,210,0.08)'
 										: 'transparent',
 									p: 1.5,
@@ -71,24 +71,20 @@ export function ShapeSelector({ value, onChange }: ShapeSelectorProps) {
 									src={s.icon}
 									alt={s.name}
 									sx={{
-										height: isMobile ? 28 : 30,
-										width: isMobile ? 28 : 30,
-										opacity: selected ? 1 : 0.8,
+										height: isMobile ? 28 : 20,
+										width: isMobile ? 28 : 20,
+										opacity: isSelected ? 1 : 0.8,
 									}}
 								/>
-								{!isMobile && (
-									<Typography variant="body2" color="text.primary">
-										{s.name}
-									</Typography>
-								)}
-								{selected && (
+								{!isMobile && <div color="text.primary">{s.name}</div>}
+								{isSelected && (
 									<CheckCircleIcon
 										color="primary"
 										sx={{
 											position: 'absolute',
 											top: 4,
 											right: 4,
-											fontSize: 16,
+											fontSize: 8,
 										}}
 									/>
 								)}

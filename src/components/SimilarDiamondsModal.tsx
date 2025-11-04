@@ -1,25 +1,15 @@
 import { Box, Modal, Typography, Card, CardContent, CardMedia, Stack, Button } from '@mui/material';
 import { Diamond } from '@pricingAlgorithm/diamondInterface';
-import { hybridPrice } from '@pricingAlgorithm/pricingAlgorithm';
 
 interface SimilarDiamondsModalProps {
 	open: boolean;
 	onClose: () => void;
-	baseDiamond: Diamond;
+	diamonds: Diamond[];
 }
 
-export function SimilarDiamondsModal({ open, onClose, baseDiamond }: SimilarDiamondsModalProps) {
+export function SimilarDiamondsModal({ open, onClose, diamonds }: SimilarDiamondsModalProps) {
 	// Simulate 4 random "similar" diamonds for now.
 	// In a real app, you'd generate or fetch them based on the base diamond.
-	const diamonds: Diamond[] = Array.from({ length: 4 }, (_, i) => ({
-		...baseDiamond,
-		carat: +(baseDiamond.carat * (0.9 + Math.random() * 0.2)).toFixed(2),
-		color: baseDiamond.color,
-		shape: baseDiamond.shape,
-		cut: baseDiamond.cut,
-		clarity: baseDiamond.clarity,
-		price: hybridPrice(baseDiamond) * (0.9 + Math.random() * 0.2),
-	}));
 
 	return (
 		<Modal open={open} onClose={onClose}>
@@ -47,13 +37,7 @@ export function SimilarDiamondsModal({ open, onClose, baseDiamond }: SimilarDiam
 
 					<Stack direction="row" spacing={2} flexWrap="wrap" justifyContent="center">
 						{diamonds.map((d, index) => (
-							<Card
-								key={index}
-								sx={{
-									width: { xs: '100%', sm: 160 },
-									textAlign: 'center',
-								}}
-							>
+							<Card key={index}>
 								<CardMedia
 									component="img"
 									height="120"
@@ -61,15 +45,17 @@ export function SimilarDiamondsModal({ open, onClose, baseDiamond }: SimilarDiam
 									alt="diamond"
 								/>
 								<CardContent>
-									<Typography variant="subtitle2">
-										{d.carat}ct {d.shape}
-									</Typography>
-									<Typography variant="body2" color="text.secondary">
-										{d.cut}, {d.color}, {d.clarity}
-									</Typography>
-									<Typography variant="body1" fontWeight="bold" mt={1}>
-										${Math.round(d.price || 0).toLocaleString()}
-									</Typography>
+									<Stack direction="row" spacing={2}>
+										<Typography variant="subtitle2">
+											{d.carat}ct {d.shape}
+										</Typography>
+										<Typography variant="body2" color="text.secondary">
+											{d.cut}, {d.color}, {d.clarity}
+										</Typography>
+										<Typography variant="body1" fontWeight="bold" mt={1}>
+											${Math.round(d.price || 0).toLocaleString()}
+										</Typography>
+									</Stack>
 								</CardContent>
 							</Card>
 						))}

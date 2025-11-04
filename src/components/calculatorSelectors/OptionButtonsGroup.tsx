@@ -1,14 +1,13 @@
-import { DiamondPropertyOption } from '@components/CalculatorConsts';
-import { Box, Button, Grid } from '@mui/material';
+import { SelectorTitle } from '@components/shared/SelectorTitle';
+import { Box, Button, Grid, Typography } from '@mui/material';
+import { DiamondPropertyOption } from '@src/components/calculatorConsts';
 import { diamondOptions } from '@src/types/diamondTypes';
-
-import { SelectorTitle } from '../SelectorTitle';
 
 export interface OptionButtonsSelectorProps {
 	title: string;
-	options: DiamondPropertyOption[];
+	options: DiamondPropertyOption;
 	selected: string;
-	onChange: (shape: diamondOptions) => void;
+	onChange: (option: diamondOptions) => void;
 }
 
 export function OptionButtonsSelector({
@@ -20,6 +19,7 @@ export function OptionButtonsSelector({
 	return (
 		<Box className="option-buttons-group">
 			<SelectorTitle title={title} />
+
 			<Grid
 				container
 				spacing={1}
@@ -28,18 +28,17 @@ export function OptionButtonsSelector({
 					mx: 1,
 				}}
 			>
-				{options.map(({ label, value }) => (
+				{Object.entries(options).map(([value, label]) => (
 					<Grid key={value} size={2}>
 						<Button
 							sx={{
 								width: '100%',
 								whiteSpace: 'nowrap',
 							}}
-							key={value}
 							variant={selected === value ? 'contained' : 'outlined'}
-							onClick={() => onChange(value)}
+							onClick={() => onChange(value as diamondOptions)}
 						>
-							{label}
+							<Typography variant="caption">{label}</Typography>
 						</Button>
 					</Grid>
 				))}

@@ -28,7 +28,6 @@ export function CaratSelector({ carat, onChange }: CaratSelectorProps) {
 				sx={{ flex: 1, minWidth: { xs: '100%', sm: 180 }, mx: 1 }}
 			>
 				<TextField
-					label="Carat"
 					type="number"
 					placeholder="1.00"
 					slotProps={{
@@ -47,7 +46,7 @@ export function CaratSelector({ carat, onChange }: CaratSelectorProps) {
 						const num = Number(val);
 						onChange(num);
 					}}
-					sx={{ width: '20%' }}
+					sx={{ width: '20%', textAlign: 'center' }}
 				/>
 				<Slider
 					value={carat}

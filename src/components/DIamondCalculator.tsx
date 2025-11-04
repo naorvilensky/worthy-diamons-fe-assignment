@@ -5,11 +5,12 @@ import {
 	FLUORESCENCE_OPTIONS,
 	POLISH_OPTIONS,
 	SYMMETRY_OPTIONS,
-} from '@components/CalculatorConsts';
+} from '@components/calculatorConsts';
+import { OriginSelector } from '@components/calculatorSelectors/OriginSelector';
+import { ShapeSelector } from '@components/calculatorSelectors/ShapeSelector';
 import { Box, Stack } from '@mui/material';
-import { CaratSelector } from '@src/components/shared/calculatorSelectors/CaratSelector';
-import { OptionButtonsSelector } from '@src/components/shared/calculatorSelectors/OptionButtonsGroup';
-import { ShapeSelector } from '@src/components/shared/calculatorSelectors/ShapeSelector';
+import { CaratSelector } from '@src/components/calculatorSelectors/CaratSelector';
+import { OptionButtonsSelector } from '@src/components/calculatorSelectors/OptionButtonsGroup';
 import { Diamond } from '@src/pricingAlgorithm/diamondInterface';
 import { diamondOptions } from '@src/types/diamondTypes';
 
@@ -22,8 +23,14 @@ export function DiamondCalculator({ diamond, handleChange }: DiamondCalculatorPr
 	return (
 		<Box className="diamond-calculator">
 			<Stack spacing={{ xs: 1, sm: 2, md: 3 }} width="100" className="form">
+				<OriginSelector
+					selected={diamond.origin}
+					onChange={(origin: Diamond['origin']) =>
+						handleChange('origin', origin as diamondOptions)
+					}
+				/>
 				<ShapeSelector
-					value={diamond.shape}
+					selected={diamond.shape}
 					onChange={(shape: Diamond['shape']) =>
 						handleChange('shape', shape as diamondOptions)
 					}

@@ -1,56 +1,61 @@
-import { diamondOptions } from '@src/types/diamondTypes';
+import { Diamond } from '@pricingAlgorithm/diamondInterface';
 
-export interface DiamondPropertyOption {
-	label: string;
-	value: diamondOptions;
-}
-export const CUT_OPTIONS: DiamondPropertyOption[] = [
-	{ label: 'Fair', value: 'FAIR' },
-	{ label: 'Good', value: 'GOOD' },
-	{ label: 'V. Good', value: 'VGOOD' },
-	{ label: 'Excellent', value: 'EX' },
-];
+export type DiamondPropertyOption = Partial<
+	Record<Exclude<Diamond[keyof Diamond], number | undefined>, string>
+>;
 
-export const COLOR_OPTIONS: DiamondPropertyOption[] = [
-	{ label: 'K', value: 'K' },
-	{ label: 'J', value: 'J' },
-	{ label: 'I', value: 'I' },
-	{ label: 'H', value: 'H' },
-	{ label: 'G', value: 'G' },
-	{ label: 'F', value: 'F' },
-	{ label: 'E', value: 'E' },
-	{ label: 'D', value: 'D' },
-];
+export const ORIGIN_OPTIONS: DiamondPropertyOption = {
+	NATURAL: 'Natural',
+	LAB_GROWN: 'Lab Grown',
+};
 
-export const CLARITY_OPTIONS: DiamondPropertyOption[] = [
-	{ label: 'SI2', value: 'SI2' },
-	{ label: 'SI1', value: 'SI1' },
-	{ label: 'VS2', value: 'VS2' },
-	{ label: 'VS1', value: 'VS1' },
-	{ label: 'VVS2', value: 'VVS2' },
-	{ label: 'VVS1', value: 'VVS1' },
-	{ label: 'IF', value: 'IF' },
-	{ label: 'FL', value: 'FL' },
-];
+export const CUT_OPTIONS: DiamondPropertyOption = {
+	FAIR: 'Fair',
+	GOOD: 'Good',
+	VGOOD: 'V. Good',
+	EX: 'Excellent',
+};
 
-export const SYMMETRY_OPTIONS: DiamondPropertyOption[] = [
-	{ label: 'Fair', value: 'FAIR' },
-	{ label: 'Good', value: 'GOOD' },
-	{ label: 'V. Good', value: 'VGOOD' },
-	{ label: 'Excellent', value: 'EX' },
-];
+export const COLOR_OPTIONS: DiamondPropertyOption = {
+	K: 'K',
+	J: 'J',
+	I: 'I',
+	H: 'H',
+	G: 'G',
+	F: 'F',
+	E: 'E',
+	D: 'D',
+};
 
-export const POLISH_OPTIONS: DiamondPropertyOption[] = [
-	{ label: 'Fair', value: 'FAIR' },
-	{ label: 'Good', value: 'GOOD' },
-	{ label: 'V. Good', value: 'VGOOD' },
-	{ label: 'Excellent', value: 'EX' },
-];
+export const CLARITY_OPTIONS: DiamondPropertyOption = {
+	SI2: 'SI2',
+	SI1: 'SI1',
+	VS2: 'VS2',
+	VS1: 'VS1',
+	VVS2: 'VVS2',
+	VVS1: 'VVS1',
+	IF: 'IF',
+	FL: 'FL',
+};
 
-export const FLUORESCENCE_OPTIONS: DiamondPropertyOption[] = [
-	{ label: 'V. Strong', value: 'VSTG' },
-	{ label: 'Strong', value: 'STG' },
-	{ label: 'Medium', value: 'MED' },
-	{ label: 'Faint', value: 'FNT' },
-	{ label: 'None', value: 'NON' },
-];
+export const SYMMETRY_OPTIONS: DiamondPropertyOption = {
+	FAIR: 'Fair',
+	GOOD: 'Good',
+	VGOOD: 'V. Good',
+	EX: 'Excellent',
+};
+
+export const POLISH_OPTIONS: DiamondPropertyOption = {
+	FAIR: 'Fair',
+	GOOD: 'Good',
+	VGOOD: 'V. Good',
+	EX: 'Excellent',
+};
+
+export const FLUORESCENCE_OPTIONS: DiamondPropertyOption = {
+	VSTG: 'V. Strong',
+	STG: 'Strong',
+	MED: 'Medium',
+	FNT: 'Faint',
+	NON: 'None',
+};

@@ -14,14 +14,14 @@ import {
 	POLISH_MAP,
 	SYMMETRY_MAP,
 	FLUORESCENCE_MAP,
-	CERTIFICATE_MAP,
+	ORIGIN_MAP,
 	CUT_FACTOR,
 	COLOR_FACTOR,
 	CLARITY_FACTOR,
 	POLISH_FACTOR,
 	SYMMETRY_FACTOR,
 	FLUORESCENCE_FACTOR,
-	CERTIFICATE_FACTOR,
+	ORIGIN_FACTOR,
 } from '@pricingAlgorithm/diamondConsts';
 import { Diamond } from '@pricingAlgorithm/diamondInterface';
 
@@ -39,7 +39,7 @@ export function baselinePrice(d: Diamond): number {
 			POLISH_FACTOR[d.polish] *
 			SYMMETRY_FACTOR[d.symmetry] *
 			FLUORESCENCE_FACTOR[d.fluorescence] *
-			CERTIFICATE_FACTOR[d.certificate]
+			ORIGIN_FACTOR[d.origin]
 	);
 }
 
@@ -57,7 +57,7 @@ export function heuristicPrice(d: Diamond): number {
 		POLISH_MAP[d.polish] * w.polish +
 		SYMMETRY_MAP[d.symmetry] * w.symmetry +
 		FLUORESCENCE_MAP[d.fluorescence] * w.fluorescence +
-		CERTIFICATE_MAP[d.certificate] * w.certificate;
+		ORIGIN_MAP[d.origin] * w.origin;
 
 	const rarityBoost = Math.pow(score / 4, 1.5);
 	return Math.round(base * rarityBoost);
@@ -78,7 +78,7 @@ export function predictPriceKNN(d: Diamond, dataset: Diamond[], k = 4): number {
 				Math.pow(POLISH_MAP[x.polish] - POLISH_MAP[d.polish], 2) +
 				Math.pow(SYMMETRY_MAP[x.symmetry] - SYMMETRY_MAP[d.symmetry], 2) +
 				Math.pow(FLUORESCENCE_MAP[x.fluorescence] - FLUORESCENCE_MAP[d.fluorescence], 2) +
-				Math.pow(CERTIFICATE_MAP[x.certificate] - CERTIFICATE_MAP[d.certificate], 2)
+				Math.pow(ORIGIN_MAP[x.origin] - ORIGIN_MAP[d.origin], 2)
 		);
 		return { ...x, distance };
 	});
@@ -117,7 +117,7 @@ export function confidenceScore(d: Diamond, dataset: Diamond[], k = 4): number {
 						FLUORESCENCE_MAP[x.fluorescence] - FLUORESCENCE_MAP[d.fluorescence],
 						2
 					) +
-					Math.pow(CERTIFICATE_MAP[x.certificate] - CERTIFICATE_MAP[d.certificate], 2)
+					Math.pow(ORIGIN_MAP[x.origin] - ORIGIN_MAP[d.origin], 2)
 			)
 		)
 		.sort((a, b) => a - b)

@@ -104,6 +104,13 @@ export const FLUORESCENCE_FACTOR = {
 	NON: 1.05,
 } as const;
 
-/* -------------------- CERTIFICATE -------------------- */
-export const CERTIFICATE_MAP = { IGI: 1, GIA: 2 } as const;
-export const CERTIFICATE_FACTOR = { IGI: 1.0, GIA: 1.05 } as const;
+/* -------------------- ORIGIN -------------------- */
+export const ORIGIN_MAP = {
+	NATURAL: 1,
+	LAB_GROWN: 2,
+} as const;
+
+export const ORIGIN_FACTOR = {
+	NATURAL: 1.0, // baseline
+	LAB_GROWN: 0.8, // usually cheaper
+} as const;

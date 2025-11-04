@@ -12,7 +12,7 @@ export const HEURISTIC_WEIGHTS = {
 	polish: 0.1,
 	symmetry: 0.1,
 	fluorescence: 0.05,
-	certificate: 0.05,
+	origin: 0.05,
 };
 
 export const HYBRID_RATIO = { heuristic: 0.6, knn: 0.4 };
@@ -26,7 +26,7 @@ export const UI_DEFAULTS: Diamond = {
 	polish: 'GOOD',
 	symmetry: 'GOOD',
 	fluorescence: 'NON',
-	certificate: 'GIA',
+	origin: 'NATURAL',
 };
 
 export const UI_RANGES = {

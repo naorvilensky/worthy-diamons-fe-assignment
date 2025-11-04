@@ -2,11 +2,11 @@ import {
 	CUT_MAP,
 	COLOR_MAP,
 	CLARITY_MAP,
-	CERTIFICATE_MAP,
 	FLUORESCENCE_MAP,
 	POLISH_MAP,
 	SHAPE_MAP,
 	SYMMETRY_MAP,
+	ORIGIN_MAP,
 } from '@src/pricingAlgorithm/diamondConsts';
 
 export interface Diamond {
@@ -18,6 +18,6 @@ export interface Diamond {
 	polish: keyof typeof POLISH_MAP;
 	symmetry: keyof typeof SYMMETRY_MAP;
 	fluorescence: keyof typeof FLUORESCENCE_MAP;
-	certificate: keyof typeof CERTIFICATE_MAP;
+	origin: keyof typeof ORIGIN_MAP;
 	price?: number;
 }
