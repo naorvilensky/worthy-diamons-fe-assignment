@@ -1,22 +1,12 @@
 import { useState } from 'react';
 
 import { SimilarDiamondsTable } from '@components/calculatorSelectors/SimilarDiamondsTable';
-import { InfoOutlined } from '@mui/icons-material';
-import { Box, Typography, Button, Stack, Card, useMediaQuery, useTheme, Chip } from '@mui/material';
+import { Box, Typography, Button, Stack, Card, useMediaQuery, useTheme } from '@mui/material';
 import { UI_DEFAULTS } from '@pricingAlgorithm/diamondConfig';
 import { Diamond } from '@pricingAlgorithm/diamondInterface';
 import { hybridPrice } from '@pricingAlgorithm/pricingAlgorithm';
 import { DiamondCalculator } from '@src/components/DIamondCalculator';
 import { SimilarDiamondsModal } from '@src/components/SimilarDiamondsModal';
-import {
-	CLARITY_OPTIONS,
-	CUT_OPTIONS,
-	FLUORESCENCE_OPTIONS,
-	ORIGIN_OPTIONS,
-	POLISH_OPTIONS,
-	SHAPE_OPTIONS,
-	SYMMETRY_OPTIONS,
-} from '@src/components/calculatorConsts';
 import { PriceEstimate } from '@src/components/shared/PriceEstimate';
 import { diamondOptions } from '@src/types/diamondTypes';
 
