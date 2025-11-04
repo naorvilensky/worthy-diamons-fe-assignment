@@ -1,6 +1,7 @@
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { ButtonBase, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Grid, Box } from '@mui/system';
+import { SelectorTitle } from '@src/components/shared/SelectorTitle';
 import { Diamond } from '@src/pricingAlgorithm/diamondInterface';
 
 export interface ShapeSelectorProps {
@@ -32,7 +33,17 @@ export function ShapeSelector({ value, onChange }: ShapeSelectorProps) {
 				maxWidth: '600px',
 			}}
 		>
-			<Grid container spacing={{ xs: 1, sm: 2 }} columns={10} data-class="shape-selector">
+			<SelectorTitle title="Shape" />
+
+			<Grid
+				container
+				spacing={{ xs: 1, sm: 2 }}
+				sx={{
+					mx: 1,
+				}}
+				columns={10}
+				data-class="shape-selector"
+			>
 				{SHAPES.map(s => {
 					const selected = s.name === value;
 					return (

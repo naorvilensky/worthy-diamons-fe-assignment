@@ -1,30 +1,25 @@
-import { Box, Button, Grid, Typography } from '@mui/material';
-import { DiamondPropertyOption } from '@pages/Home/Home';
+import { DiamondPropertyOption } from '@components/CalculatorConsts';
+import { Box, Button, Grid } from '@mui/material';
 import { diamondOptions } from '@src/types/diamondTypes';
 
-export interface OptionButtonsGroupProps {
+import { SelectorTitle } from '../SelectorTitle';
+
+export interface OptionButtonsSelectorProps {
 	title: string;
 	options: DiamondPropertyOption[];
 	selected: string;
 	onChange: (shape: diamondOptions) => void;
 }
 
-export function OptionButtonsGroup({
+export function OptionButtonsSelector({
 	title,
 	options,
 	selected,
 	onChange,
-}: OptionButtonsGroupProps) {
+}: OptionButtonsSelectorProps) {
 	return (
 		<Box className="option-buttons-group">
-			<Typography
-				sx={{
-					mx: 1,
-					mb: 1,
-				}}
-			>
-				{title}
-			</Typography>
+			<SelectorTitle title={title} />
 			<Grid
 				container
 				spacing={1}
