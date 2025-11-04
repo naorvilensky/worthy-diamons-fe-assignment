@@ -90,7 +90,7 @@ export function SimilarDiamondsModal({
 											<CardMedia
 												component="img"
 												height="150"
-												image={`https://source.unsplash.com/300x300/?diamond,gem,${d.shape}`}
+												image={`/src/assets/similar-diamonds/${d.img}`}
 												alt={`${d.shape} diamond`}
 											/>
 											<CardContent>

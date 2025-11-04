@@ -26,7 +26,7 @@ export const CUT_OPTIONS: DiamondPropertyOption = {
 	FAIR: 'Fair',
 	GOOD: 'Good',
 	VGOOD: 'V. Good',
-	EX: 'Excellent',
+	EXCELLENT: 'Excellent',
 };
 
 export const COLOR_OPTIONS: DiamondPropertyOption = {
@@ -55,20 +55,20 @@ export const SYMMETRY_OPTIONS: DiamondPropertyOption = {
 	FAIR: 'Fair',
 	GOOD: 'Good',
 	VGOOD: 'V. Good',
-	EX: 'Excellent',
+	EXCELLENT: 'Excellent',
 };
 
 export const POLISH_OPTIONS: DiamondPropertyOption = {
 	FAIR: 'Fair',
 	GOOD: 'Good',
 	VGOOD: 'V. Good',
-	EX: 'Excellent',
+	EXCELLENT: 'Excellent',
 };
 
 export const FLUORESCENCE_OPTIONS: DiamondPropertyOption = {
-	VSTG: 'V. Strong',
-	STG: 'Strong',
-	MED: 'Medium',
-	FNT: 'Faint',
-	NON: 'None',
+	VSTRONG: 'V. Strong',
+	STRONG: 'Strong',
+	MEDIUM: 'Medium',
+	FAINT: 'Faint',
+	NONE: 'None',
 };

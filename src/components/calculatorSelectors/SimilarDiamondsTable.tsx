@@ -1,6 +1,8 @@
 import { Card, CardMedia, Typography, Stack, Box } from '@mui/material';
 import { Diamond } from '@pricingAlgorithm/diamondInterface';
 
+import { CLARITY_OPTIONS, COLOR_OPTIONS, ORIGIN_OPTIONS } from '../calculatorConsts';
+
 interface SimilarDiamondsTableProps {
 	diamonds: Diamond[];
 }
@@ -48,7 +50,7 @@ export function SimilarDiamondsTable({ diamonds }: SimilarDiamondsTableProps) {
 					>
 						<CardMedia
 							component="img"
-							src={`https://source.unsplash.com/100x100/?diamond,${d.shape}`}
+							src={`/src/assets/similar-diamonds/${d.img}`}
 							alt={`${d.shape} diamond`}
 							sx={{
 								width: 64,
@@ -60,13 +62,13 @@ export function SimilarDiamondsTable({ diamonds }: SimilarDiamondsTableProps) {
 						/>
 
 						{/* Diamond properties */}
-						<Typography fontWeight={600}>{d.carat.toFixed(2)}</Typography>
+						<Typography fontWeight={600}>{d.carat.toFixed(2)}ct</Typography>
 
-						<Typography fontWeight={600}>{d.clarity}</Typography>
+						<Typography fontWeight={600}>{CLARITY_OPTIONS[d.clarity]}</Typography>
 
-						<Typography fontWeight={600}>{d.color}</Typography>
+						<Typography fontWeight={600}>{COLOR_OPTIONS[d.color]}</Typography>
 
-						<Typography fontWeight={600}>{d.origin}</Typography>
+						<Typography fontWeight={600}>{ORIGIN_OPTIONS[d.origin]}</Typography>
 
 						<Typography fontWeight={600} color="primary">
 							${Math.round(d.price || 0).toLocaleString()}

@@ -25,7 +25,7 @@ export const UI_DEFAULTS: Diamond = {
 	clarity: 'VS1',
 	polish: 'GOOD',
 	symmetry: 'GOOD',
-	fluorescence: 'NON',
+	fluorescence: 'MEDIUM',
 	origin: 'NATURAL',
 };
 

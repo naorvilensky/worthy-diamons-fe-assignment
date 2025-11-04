@@ -25,8 +25,8 @@ export const SHAPE_FACTOR = {
 } as const;
 
 /* -------------------- CUT -------------------- */
-export const CUT_MAP = { FAIR: 1, GOOD: 2, VGOOD: 3, EX: 4 } as const;
-export const CUT_FACTOR = { FAIR: 0.9, GOOD: 1.0, VGOOD: 1.1, EX: 1.2 } as const;
+export const CUT_MAP = { FAIR: 1, GOOD: 2, VGOOD: 3, EXCELLENT: 4 } as const;
+export const CUT_FACTOR = { FAIR: 0.9, GOOD: 1.0, VGOOD: 1.1, EXCELLENT: 1.2 } as const;
 
 /* -------------------- COLOR -------------------- */
 export const COLOR_MAP = {
@@ -75,33 +75,33 @@ export const CLARITY_FACTOR = {
 } as const;
 
 /* -------------------- SYMMETRY -------------------- */
-export const SYMMETRY_MAP = { FAIR: 1, GOOD: 2, VGOOD: 3, EX: 4 } as const;
+export const SYMMETRY_MAP = { FAIR: 1, GOOD: 2, VGOOD: 3, EXCELLENT: 4 } as const;
 export const SYMMETRY_FACTOR = {
 	FAIR: 0.95,
 	GOOD: 1.0,
 	VGOOD: 1.05,
-	EX: 1.1,
+	EXCELLENT: 1.1,
 } as const;
 
 /* -------------------- POLISH -------------------- */
-export const POLISH_MAP = { FAIR: 1, GOOD: 2, VGOOD: 3, EX: 4 } as const;
-export const POLISH_FACTOR = { FAIR: 0.95, GOOD: 1.0, VGOOD: 1.05, EX: 1.1 } as const;
+export const POLISH_MAP = { FAIR: 1, GOOD: 2, VGOOD: 3, EXCELLENT: 4 } as const;
+export const POLISH_FACTOR = { FAIR: 0.95, GOOD: 1.0, VGOOD: 1.05, EXCELLENT: 1.1 } as const;
 
 /* -------------------- FLUORESCENCE -------------------- */
 export const FLUORESCENCE_MAP = {
-	VSTG: 1,
-	STG: 2,
-	MED: 3,
-	FNT: 4,
-	NON: 5,
+	VSTRONG: 1,
+	STRONG: 2,
+	MEDIUM: 3,
+	FAINT: 4,
+	NONE: 5,
 } as const;
 
 export const FLUORESCENCE_FACTOR = {
-	VSTG: 0.85,
-	STG: 0.9,
-	MED: 0.95,
-	FNT: 1.0,
-	NON: 1.05,
+	VSTRONG: 0.85,
+	STRONG: 0.9,
+	MEDIUM: 0.95,
+	FAINT: 1.0,
+	NONE: 1.05,
 } as const;
 
 /* -------------------- ORIGIN -------------------- */

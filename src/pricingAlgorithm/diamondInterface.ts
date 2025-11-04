@@ -20,4 +20,5 @@ export interface Diamond {
 	fluorescence: keyof typeof FLUORESCENCE_MAP;
 	origin: keyof typeof ORIGIN_MAP;
 	price?: number;
+	img?: string;
 }

@@ -9,6 +9,7 @@ import { DiamondCalculator } from '@src/components/DIamondCalculator';
 import { SimilarDiamondsModal } from '@src/components/SimilarDiamondsModal';
 import { PriceEstimate } from '@src/components/shared/PriceEstimate';
 import { diamondOptions } from '@src/types/diamondTypes';
+import { getSimilarDiamonds } from '@src/utils/similarDiamondsUtils';
 
 export function CalculatorPage() {
 	const [diamond, setDiamond] = useState<Diamond>({ ...UI_DEFAULTS });
@@ -22,18 +23,11 @@ export function CalculatorPage() {
 		setDiamond(prev => ({ ...prev, [key]: value }));
 
 	const handleCalculate = () => {
-		const result = hybridPrice(diamond);
-		setPrice(result);
-		const diamonds: Diamond[] = Array.from({ length: 4 }, () => ({
-			...diamond,
-			carat: +(diamond.carat * (0.9 + Math.random() * 0.2)).toFixed(2),
-			color: diamond.color,
-			shape: diamond.shape,
-			cut: diamond.cut,
-			clarity: diamond.clarity,
-			price: hybridPrice(diamond) * (0.9 + Math.random() * 0.2),
-		}));
+		const calculatedPrice = hybridPrice(diamond);
+		setPrice(calculatedPrice);
 
+		const diamonds = getSimilarDiamonds(diamond);
+		console.log('Similar Diamonds:', diamonds);
 		setSimilarDiamonds(diamonds);
 
 		if (isMobile) {
