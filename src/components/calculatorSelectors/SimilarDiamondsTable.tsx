@@ -36,6 +36,7 @@ export function SimilarDiamondsTable({ diamonds }: SimilarDiamondsTableProps) {
 						p: 1.5,
 						mb: 2,
 						boxShadow: 1,
+						border: '1px solid black',
 					}}
 				>
 					{/* Left side: image and basic info */}

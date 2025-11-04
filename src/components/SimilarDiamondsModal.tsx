@@ -1,15 +1,41 @@
-import { Box, Modal, Typography, Card, CardContent, CardMedia, Stack, Button } from '@mui/material';
+import { useCallback } from 'react';
+
+import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
+import {
+	Box,
+	Modal,
+	Typography,
+	Button,
+	Card,
+	CardContent,
+	CardMedia,
+	Stack,
+	IconButton,
+} from '@mui/material';
 import { Diamond } from '@pricingAlgorithm/diamondInterface';
+import useEmblaCarousel from 'embla-carousel-react';
+
+import { PriceEstimate } from './shared/PriceEstimate';
 
 interface SimilarDiamondsModalProps {
 	open: boolean;
+	price: number;
 	onClose: () => void;
-	diamonds: Diamond[];
+	diamond: Diamond;
+	similarDiamonds: Diamond[];
 }
 
-export function SimilarDiamondsModal({ open, onClose, diamonds }: SimilarDiamondsModalProps) {
-	// Simulate 4 random "similar" diamonds for now.
-	// In a real app, you'd generate or fetch them based on the base diamond.
+export function SimilarDiamondsModal({
+	open,
+	onClose,
+	diamond,
+	similarDiamonds,
+	price,
+}: SimilarDiamondsModalProps) {
+	const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'center', loop: true });
+
+	const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+	const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
 	return (
 		<Modal open={open} onClose={onClose}>
@@ -29,49 +55,105 @@ export function SimilarDiamondsModal({ open, onClose, diamonds }: SimilarDiamond
 					overflow: 'hidden',
 				}}
 			>
-				{/* Scrollable content */}
-				<Box sx={{ flex: 1, overflowY: 'auto', p: { xs: 2, sm: 4 } }}>
-					<Typography variant="h6" mb={2}>
-						Similar Diamonds
-					</Typography>
+				<Box sx={{ flex: 1, p: { xs: 2, sm: 4 } }}>
+					<PriceEstimate price={price} diamond={diamond} />
+					{/* Carousel Container */}
+					<Box sx={{ position: 'relative' }}>
+						<Box
+							ref={emblaRef}
+							sx={{
+								overflow: 'hidden',
+							}}
+						>
+							<Box
+								sx={{
+									display: 'flex',
+								}}
+							>
+								{similarDiamonds.map((d, index) => (
+									<Box
+										key={index}
+										sx={{
+											position: 'relative',
+											minWidth: { xs: '80%', sm: '45%', md: '30%' },
+											mr: 2,
+											scrollSnapAlign: 'center',
+										}}
+									>
+										<Card
+											sx={{
+												borderRadius: 2,
+												boxShadow: 3,
+												overflow: 'hidden',
+											}}
+										>
+											<CardMedia
+												component="img"
+												height="150"
+												image={`https://source.unsplash.com/300x300/?diamond,gem,${d.shape}`}
+												alt={`${d.shape} diamond`}
+											/>
+											<CardContent>
+												<Stack spacing={0.5} alignItems="center">
+													<Typography variant="subtitle2">
+														{d.carat}ct {d.shape}
+													</Typography>
+													<Typography
+														variant="body2"
+														color="text.secondary"
+													>
+														{d.cut}, {d.color}, {d.clarity}
+													</Typography>
+													<Typography variant="body1" fontWeight="bold">
+														${Math.round(d.price || 0).toLocaleString()}
+													</Typography>
+												</Stack>
+											</CardContent>
+										</Card>
+									</Box>
+								))}
+							</Box>
+						</Box>
 
-					<Stack direction="row" spacing={2} flexWrap="wrap" justifyContent="center">
-						{diamonds.map((d, index) => (
-							<Card key={index}>
-								<CardMedia
-									component="img"
-									height="120"
-									image={`https://source.unsplash.com/200x200/?diamond,gem,${d.shape}`}
-									alt="diamond"
-								/>
-								<CardContent>
-									<Stack direction="row" spacing={2}>
-										<Typography variant="subtitle2">
-											{d.carat}ct {d.shape}
-										</Typography>
-										<Typography variant="body2" color="text.secondary">
-											{d.cut}, {d.color}, {d.clarity}
-										</Typography>
-										<Typography variant="body1" fontWeight="bold" mt={1}>
-											${Math.round(d.price || 0).toLocaleString()}
-										</Typography>
-									</Stack>
-								</CardContent>
-							</Card>
-						))}
-					</Stack>
+						{/* Navigation Buttons */}
+						<IconButton
+							onClick={scrollPrev}
+							sx={{
+								position: 'absolute',
+								top: '50%',
+								left: 0,
+								transform: 'translateY(-50%)',
+								bgcolor: 'background.paper',
+								boxShadow: 1,
+								'&:hover': { bgcolor: 'grey.100' },
+							}}
+						>
+							<ArrowBackIosNew fontSize="small" />
+						</IconButton>
+						<IconButton
+							onClick={scrollNext}
+							sx={{
+								position: 'absolute',
+								top: '50%',
+								right: 0,
+								transform: 'translateY(-50%)',
+								bgcolor: 'background.paper',
+								boxShadow: 1,
+								'&:hover': { bgcolor: 'grey.100' },
+							}}
+						>
+							<ArrowForwardIos fontSize="small" />
+						</IconButton>
+					</Box>
 				</Box>
 
-				{/* Fixed footer */}
+				{/* Footer */}
 				<Box
 					sx={{
-						position: 'sticky',
-						bottom: 0,
 						bgcolor: 'background.paper',
 						borderTop: '1px solid',
 						borderColor: 'divider',
 						p: 2,
-						textAlign: 'center',
 					}}
 				>
 					<Button onClick={onClose} variant="outlined" color="primary" fullWidth>

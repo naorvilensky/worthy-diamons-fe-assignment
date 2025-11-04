@@ -1,6 +1,6 @@
-import { CssBaseline, Button } from '@mui/material';
-import { ThemeProvider, createTheme, useColorScheme } from '@mui/material/styles';
-import { Home } from '@pages/Home/Home';
+import { CssBaseline } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { CalculatorPage } from '@src/pages/CalculatorPage';
 
 import './App.scss';
 
@@ -14,7 +14,7 @@ function App() {
 	return (
 		<ThemeProvider theme={theme} defaultMode="light" modeStorageKey="mui-mode">
 			<CssBaseline />
-			<Home />
+			<CalculatorPage />
 		</ThemeProvider>
 	);
 }

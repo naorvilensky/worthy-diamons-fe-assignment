@@ -4,6 +4,19 @@ export type DiamondPropertyOption = Partial<
 	Record<Exclude<Diamond[keyof Diamond], number | undefined>, string>
 >;
 
+export const SHAPE_OPTIONS: DiamondPropertyOption = {
+	Round: 'Round',
+	Princess: 'Princess',
+	Cushion: 'Cushion',
+	Emerald: 'Emerald',
+	Oval: 'Oval',
+	Pear: 'Pear',
+	Marquise: 'Marquise',
+	Radiant: 'Radiant',
+	Asscher: 'Asscher',
+	Heart: 'Heart',
+};
+
 export const ORIGIN_OPTIONS: DiamondPropertyOption = {
 	NATURAL: 'Natural',
 	LAB_GROWN: 'Lab Grown',

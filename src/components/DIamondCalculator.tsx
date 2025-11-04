@@ -22,7 +22,7 @@ export interface DiamondCalculatorProps {
 export function DiamondCalculator({ diamond, handleChange }: DiamondCalculatorProps) {
 	return (
 		<Box className="diamond-calculator">
-			<Stack spacing={{ xs: 1, sm: 2, md: 3 }} width="100" className="form">
+			<Stack spacing={1} width="100" className="form">
 				<OriginSelector
 					selected={diamond.origin}
 					onChange={(origin: Diamond['origin']) =>
