@@ -28,20 +28,85 @@ const theme = createTheme({
 
 	typography: {
 		fontFamily: ['Inter', 'Playfair Display', 'serif'].join(','),
+
+		// --- Headings ---
 		h1: {
 			fontFamily: 'Playfair Display, serif',
 			fontWeight: 600,
-			fontSize: '2.5rem',
+			fontSize: '2.5rem', // ~40px
+			lineHeight: 1.2,
+			letterSpacing: '-0.01em',
 		},
 		h2: {
 			fontFamily: 'Playfair Display, serif',
 			fontWeight: 500,
-			fontSize: '1.8rem',
+			fontSize: '1.8rem', // ~29px
+			lineHeight: 1.3,
+			letterSpacing: '-0.005em',
 		},
-		button: {
-			textTransform: 'none',
-			fontWeight: 600,
+		h3: {
+			fontFamily: 'Playfair Display, serif',
+			fontWeight: 500,
+			fontSize: '1.5rem', // ~24px
+			lineHeight: 1.3,
+		},
+		h4: {
+			fontFamily: 'Playfair Display, serif',
+			fontWeight: 500,
+			fontSize: '1.25rem', // ~20px
+			lineHeight: 1.4,
+		},
+
+		// --- Subheadings / subtitles ---
+		subtitle1: {
 			fontFamily: 'Inter, sans-serif',
+			fontWeight: 600,
+			fontSize: '1rem',
+			lineHeight: 1.5,
+		},
+		subtitle2: {
+			fontFamily: 'Inter, sans-serif',
+			fontWeight: 500,
+			fontSize: '0.9rem',
+			lineHeight: 1.4,
+		},
+
+		// --- Body text ---
+		body1: {
+			fontFamily: 'Inter, sans-serif',
+			fontSize: '1rem',
+			lineHeight: 1.6,
+			color: '#1A1A1A',
+		},
+		body2: {
+			fontFamily: 'Inter, sans-serif',
+			fontSize: '0.875rem',
+			lineHeight: 1.5,
+			color: '#555555',
+		},
+
+		// --- Buttons / UI text ---
+		button: {
+			fontFamily: 'Inter, sans-serif',
+			fontWeight: 600,
+			fontSize: '0.9rem',
+			textTransform: 'none',
+		},
+
+		// --- Captions / metadata ---
+		caption: {
+			fontFamily: 'Inter, sans-serif',
+			fontSize: '0.75rem',
+			lineHeight: 1.4,
+			color: '#777777',
+		},
+		overline: {
+			fontFamily: 'Inter, sans-serif',
+			fontWeight: 600,
+			fontSize: '0.75rem',
+			textTransform: 'uppercase',
+			letterSpacing: '0.05em',
+			color: '#999999',
 		},
 	},
 

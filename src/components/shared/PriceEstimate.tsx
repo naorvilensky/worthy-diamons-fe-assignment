@@ -22,7 +22,7 @@ export function PriceEstimate({ price, diamond }: PriceEstimateProps) {
 				<InfoOutlined fontSize="small" color="action" />
 			</Typography>
 
-			<Typography variant="h3" fontWeight={700} mt={0.5}>
+			<Typography variant="h1" fontWeight={700} mt={0.5}>
 				{price !== null ? `$${price.toLocaleString()}` : '---'}
 			</Typography>
 

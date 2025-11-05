@@ -14,24 +14,4 @@ function App() {
 	);
 }
 
-// function Switcher() {
-// 	const { mode, setMode } = useColorScheme();
-// 	if (!mode) {
-// 		return null;
-// 	}
-
-// 	return (
-// 		<Button
-// 			onClick={() => {
-// 				console.log(mode);
-// 				setMode(mode === 'light' ? 'dark' : 'light');
-// 			}}
-// 			sx={{ position: 'absolute', top: 16, right: 16 }}
-// 			variant="outlined"
-// 		>
-// 			{mode === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
-// 		</Button>
-// 	);
-// }
-
 export default App;

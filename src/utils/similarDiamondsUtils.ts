@@ -40,8 +40,6 @@ export function getSimilarDiamonds(target: Diamond, limit = 10): Diamond[] {
 		return { ...x, distance };
 	});
 
-	console.log('withDistance', withDistance);
-
 	return withDistance
 		.filter(x => x.distance > 0)
 		.sort((a, b) => a.distance - b.distance)

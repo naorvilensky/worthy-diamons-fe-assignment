@@ -27,7 +27,6 @@ export function CalculatorPage() {
 		setPrice(calculatedPrice);
 
 		const diamonds = getSimilarDiamonds(diamond);
-		console.log('Similar Diamonds:', diamonds);
 		setSimilarDiamonds(diamonds);
 
 		if (isMobile) {
@@ -38,7 +37,7 @@ export function CalculatorPage() {
 	return (
 		<Box className="calculator-page" sx={{ m: 3, flex: 1, maxWidth: 1200, mx: 'auto' }}>
 			<Stack width="100%" direction="column" alignItems="center" spacing={4}>
-				<Typography variant="h4" className="title">
+				<Typography variant="h2" className="title" sx={{ textAlign: 'center', mb: 2 }}>
 					Worthy Diamond Price Calculator
 				</Typography>
 				<Stack
@@ -48,33 +47,58 @@ export function CalculatorPage() {
 					justifyContent="center"
 					spacing={6}
 				>
-					<Card
-						sx={{
-							flex: 1,
-							height: 'auto',
-							maxWidth: '400px',
-						}}
-					>
-						<Stack>
+					<Stack>
+						<Typography variant="h2" sx={{ mb: 1 }}>
+							Calculator Input
+						</Typography>
+						<Card
+							sx={{
+								flex: 1,
+								height: 'auto',
+								maxWidth: '400px',
+								pt: 1,
+							}}
+						>
 							<DiamondCalculator diamond={diamond} handleChange={handleChange} />
 
-							<Button
-								variant="contained"
-								color="primary"
-								onClick={handleCalculate}
-								sx={{ m: 2, p: 0.3 }}
-							>
-								Calculate Price
-							</Button>
-						</Stack>
-					</Card>
+							<Stack direction="row" justifyContent="center">
+								<Button
+									variant="contained"
+									color="info"
+									onClick={handleCalculate}
+									sx={{ flex: 1, m: 2, p: 0.3 }}
+								>
+									Calculate Price
+								</Button>
+							</Stack>
+						</Card>
+					</Stack>
 
 					{!isMobile && (
-						<Stack spacing={2} flex={1}>
-							<Card>
+						<Stack flex={1}>
+							<Typography variant="h2" sx={{ mb: 1 }}>
+								Calculator Output
+							</Typography>
+							<Card className="price-estimate-card" sx={{ mt: 0 }}>
 								<PriceEstimate price={price} diamond={diamond} />
 							</Card>
-							<SimilarDiamondsTable diamonds={similarDiamonds} />
+							{similarDiamonds?.length > 0 && (
+								<SimilarDiamondsTable diamonds={similarDiamonds} />
+							)}
+							{!similarDiamonds?.length && (
+								<Card
+									sx={{
+										py: 4,
+										textAlign: 'center',
+										color: 'text.secondary',
+									}}
+								>
+									<Typography variant="body1">
+										💎 Similar diamonds will appear here after you calculate a
+										price.
+									</Typography>
+								</Card>
+							)}
 						</Stack>
 					)}
 				</Stack>

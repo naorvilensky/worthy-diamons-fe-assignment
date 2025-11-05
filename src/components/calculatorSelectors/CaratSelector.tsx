@@ -25,7 +25,7 @@ export function CaratSelector({ carat, onChange }: CaratSelectorProps) {
 				direction="column"
 				alignItems="center"
 				spacing={2}
-				sx={{ flex: 1, minWidth: { xs: '100%', sm: 180 }, mx: 1 }}
+				sx={{ flex: 1, minWidth: { xs: '100%', sm: 180 } }}
 			>
 				<TextField
 					type="number"
@@ -33,6 +33,8 @@ export function CaratSelector({ carat, onChange }: CaratSelectorProps) {
 					slotProps={{
 						htmlInput: {
 							step: 0.01,
+							sx: { textAlign: 'center', paddingY: 0.5 },
+							inputMode: 'decimal',
 						},
 					}}
 					value={caratInput}
@@ -48,14 +50,16 @@ export function CaratSelector({ carat, onChange }: CaratSelectorProps) {
 					}}
 					sx={{ width: '20%', textAlign: 'center' }}
 				/>
-				<Slider
-					value={carat}
-					onChange={(_, v) => onChange(Number(v))}
-					min={UI_RANGES.carat.min}
-					max={UI_RANGES.carat.max}
-					step={UI_RANGES.carat.step}
-					valueLabelDisplay="auto"
-				/>
+				<Stack justifyContent="center" sx={{ width: '85%' }}>
+					<Slider
+						value={carat}
+						onChange={(_, v) => onChange(Number(v))}
+						min={UI_RANGES.carat.min}
+						max={UI_RANGES.carat.max}
+						step={UI_RANGES.carat.step}
+						valueLabelDisplay="auto"
+					/>
+				</Stack>
 			</Stack>
 		</Box>
 	);
