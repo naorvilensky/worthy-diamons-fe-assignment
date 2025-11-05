@@ -62,7 +62,7 @@ All diamond quality factors (shape, cut, color, clarity, polish, symmetry, fluor
 - **MAPs** are used for scoring and distance comparisons.
 - **FACTORS** are used for multiplicative adjustments in the baseline model.
 
-These constants were built to roughly align with GIA grading scales and standard diamond pricing logic.
+These constants were built to roughly align with grading scales and standard diamond pricing logic.
 
 ---
 
