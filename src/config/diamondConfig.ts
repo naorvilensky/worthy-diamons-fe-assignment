@@ -1,4 +1,4 @@
-import { Diamond } from './diamondInterface';
+import { Diamond } from '../types/diamondInterface';
 
 export const BASE_PRICE = 5000; // base multiplier per carat
 export const CARAT_POWER_BASELINE = 1.2;

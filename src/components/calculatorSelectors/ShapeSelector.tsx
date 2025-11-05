@@ -2,7 +2,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { ButtonBase, useMediaQuery, useTheme } from '@mui/material';
 import { Grid, Box } from '@mui/system';
 import { SelectorTitle } from '@src/components/shared/SelectorTitle';
-import { Diamond } from '@src/pricingAlgorithm/diamondInterface';
+import { Diamond } from '@src/types/diamondInterface';
 
 export interface ShapeSelectorProps {
 	selected: Diamond['shape'];

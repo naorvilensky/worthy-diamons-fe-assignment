@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { Box, Slider, Stack, TextField } from '@mui/material';
 import { SelectorTitle } from '@src/components/shared/SelectorTitle';
-import { UI_RANGES } from '@src/pricingAlgorithm/diamondConfig';
-import { Diamond } from '@src/pricingAlgorithm/diamondInterface';
+import { UI_RANGES } from '@src/config/diamondConfig';
+import { Diamond } from '@src/types/diamondInterface';
 
 export interface CaratSelectorProps {
 	carat: Diamond['carat'];

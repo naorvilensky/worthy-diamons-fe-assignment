@@ -9,7 +9,7 @@ import {
 	FLUORESCENCE_MAP,
 	ORIGIN_MAP,
 } from '@pricingAlgorithm/diamondConsts';
-import { Diamond } from '@pricingAlgorithm/diamondInterface';
+import { Diamond } from '@src/types/diamondInterface';
 
 const dataset = rawData as unknown as Diamond[];
 

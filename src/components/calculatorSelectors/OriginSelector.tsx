@@ -1,7 +1,7 @@
 import { SelectorTitle } from '@components/shared/SelectorTitle';
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { ORIGIN_OPTIONS } from '@src/components/calculatorConsts';
-import { Diamond } from '@src/pricingAlgorithm/diamondInterface';
+import { Diamond } from '@src/types/diamondInterface';
 
 export interface OriginSelectorProps {
 	selected: string;

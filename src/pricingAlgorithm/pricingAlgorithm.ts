@@ -1,11 +1,4 @@
 import {
-	BASE_PRICE,
-	CARAT_POWER_BASELINE,
-	CARAT_POWER_HEURISTIC,
-	HEURISTIC_WEIGHTS,
-	HYBRID_RATIO,
-} from '@pricingAlgorithm/diamondConfig';
-import {
 	SHAPE_MAP,
 	SHAPE_FACTOR,
 	CUT_MAP,
@@ -23,7 +16,14 @@ import {
 	FLUORESCENCE_FACTOR,
 	ORIGIN_FACTOR,
 } from '@pricingAlgorithm/diamondConsts';
-import { Diamond } from '@pricingAlgorithm/diamondInterface';
+import {
+	BASE_PRICE,
+	CARAT_POWER_BASELINE,
+	CARAT_POWER_HEURISTIC,
+	HEURISTIC_WEIGHTS,
+	HYBRID_RATIO,
+} from '@src/config/diamondConfig';
+import { Diamond } from '@src/types/diamondInterface';
 
 // ---------- 1. Baseline Algorithm ----------
 

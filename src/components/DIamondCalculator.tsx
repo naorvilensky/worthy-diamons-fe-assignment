@@ -11,7 +11,7 @@ import { ShapeSelector } from '@components/calculatorSelectors/ShapeSelector';
 import { Box, Stack } from '@mui/material';
 import { CaratSelector } from '@src/components/calculatorSelectors/CaratSelector';
 import { OptionButtonsSelector } from '@src/components/calculatorSelectors/OptionButtonsGroup';
-import { Diamond } from '@src/pricingAlgorithm/diamondInterface';
+import { Diamond } from '@src/types/diamondInterface';
 import { diamondOptions } from '@src/types/diamondTypes';
 
 export interface DiamondCalculatorProps {

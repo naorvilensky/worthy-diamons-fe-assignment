@@ -1,5 +1,5 @@
 import { Card, CardMedia, Typography, Stack, Box } from '@mui/material';
-import { Diamond } from '@pricingAlgorithm/diamondInterface';
+import { Diamond } from '@src/types/diamondInterface';
 
 import { CLARITY_OPTIONS, COLOR_OPTIONS, ORIGIN_OPTIONS } from '../calculatorConsts';
 

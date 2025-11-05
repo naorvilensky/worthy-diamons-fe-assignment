@@ -1,4 +1,4 @@
-import { Diamond } from '@pricingAlgorithm/diamondInterface';
+import { Diamond } from '@src/types/diamondInterface';
 
 export type diamondOptions =
 	| Diamond['shape']

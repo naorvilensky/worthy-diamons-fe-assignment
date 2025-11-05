@@ -1,5 +1,5 @@
 import { SelectorTitle } from '@components/shared/SelectorTitle';
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import { DiamondPropertyOption } from '@src/components/calculatorConsts';
 import { diamondOptions } from '@src/types/diamondTypes';
 
@@ -31,14 +31,16 @@ export function OptionButtonsSelector({
 				{Object.entries(options).map(([value, label]) => (
 					<Grid key={value} size={2}>
 						<Button
+							size="small"
 							sx={{
 								width: '100%',
 								whiteSpace: 'nowrap',
+								p: 0.1,
 							}}
 							variant={selected === value ? 'contained' : 'outlined'}
 							onClick={() => onChange(value as diamondOptions)}
 						>
-							<Typography variant="caption">{label}</Typography>
+							{label}
 						</Button>
 					</Grid>
 				))}

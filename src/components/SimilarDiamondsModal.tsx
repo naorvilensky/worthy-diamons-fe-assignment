@@ -12,14 +12,14 @@ import {
 	Stack,
 	IconButton,
 } from '@mui/material';
-import { Diamond } from '@pricingAlgorithm/diamondInterface';
+import { Diamond } from '@src/types/diamondInterface';
 import useEmblaCarousel from 'embla-carousel-react';
 
 import { PriceEstimate } from './shared/PriceEstimate';
 
 interface SimilarDiamondsModalProps {
 	open: boolean;
-	price: number;
+	price: number | null;
 	onClose: () => void;
 	diamond: Diamond;
 	similarDiamonds: Diamond[];
