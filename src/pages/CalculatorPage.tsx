@@ -48,9 +48,11 @@ export function CalculatorPage() {
 					spacing={6}
 				>
 					<Stack>
-						<Typography variant="h2" sx={{ mb: 1 }}>
-							Calculator Input
-						</Typography>
+						{!isMobile && (
+							<Typography variant="h2" sx={{ mb: 1 }}>
+								Calculator Input
+							</Typography>
+						)}
 						<Card
 							sx={{
 								flex: 1,

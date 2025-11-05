@@ -58,6 +58,9 @@ export function SimilarDiamondsModal({
 				<Box sx={{ flex: 1, p: { xs: 2, sm: 4 } }}>
 					<PriceEstimate price={price} diamond={diamond} />
 					{/* Carousel Container */}
+					<Typography variant="h6" sx={{ textAlign: 'center' }}>
+						Similar Diamonds
+					</Typography>
 					<Box sx={{ position: 'relative' }}>
 						<Box
 							ref={emblaRef}
@@ -85,6 +88,7 @@ export function SimilarDiamondsModal({
 												borderRadius: 2,
 												boxShadow: 3,
 												overflow: 'hidden',
+												mb: 2,
 											}}
 										>
 											<CardMedia
@@ -92,6 +96,7 @@ export function SimilarDiamondsModal({
 												height="150"
 												image={`/src/assets/similar-diamonds/${d.img}`}
 												alt={`${d.shape} diamond`}
+												sx={{ objectFit: 'contain' }}
 											/>
 											<CardContent>
 												<Stack spacing={0.5} alignItems="center">
