@@ -2,11 +2,11 @@ import { useState } from 'react';
 
 import { SimilarDiamondsTable } from '@components/calculatorSelectors/SimilarDiamondsTable';
 import { Box, Typography, Button, Stack, Card, useMediaQuery, useTheme } from '@mui/material';
-import { hybridPrice } from '@pricingAlgorithm/pricingAlgorithm';
 import { DiamondCalculator } from '@src/components/DIamondCalculator';
 import { SimilarDiamondsModal } from '@src/components/SimilarDiamondsModal';
 import { PriceEstimate } from '@src/components/shared/PriceEstimate';
 import { UI_DEFAULTS } from '@src/config/diamondConfig';
+import { calculatePrice } from '@src/pricingAlgorithm/pricingAlgorithm';
 import { Diamond } from '@src/types/diamondInterface';
 import { diamondOptions } from '@src/types/diamondTypes';
 import { getSimilarDiamonds } from '@utils/similarDiamondsUtils';
@@ -23,7 +23,7 @@ export function CalculatorPage() {
 		setDiamond(prev => ({ ...prev, [key]: value }));
 
 	const handleCalculate = () => {
-		const calculatedPrice = hybridPrice(diamond);
+		const calculatedPrice = calculatePrice(diamond);
 		setPrice(calculatedPrice);
 
 		const diamonds = getSimilarDiamonds(diamond);
@@ -91,6 +91,7 @@ export function CalculatorPage() {
 										py: 4,
 										textAlign: 'center',
 										color: 'text.secondary',
+										mt: 2,
 									}}
 								>
 									<Typography variant="body1">

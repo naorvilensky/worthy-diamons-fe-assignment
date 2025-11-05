@@ -15,8 +15,6 @@ export const HEURISTIC_WEIGHTS = {
 	origin: 0.05,
 };
 
-export const HYBRID_RATIO = { heuristic: 0.6, knn: 0.4 };
-
 export const UI_DEFAULTS: Diamond = {
 	carat: 1.0,
 	shape: 'Heart',
